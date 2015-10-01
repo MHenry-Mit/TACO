@@ -513,6 +513,20 @@
                 {
                     "name": "--target", "description": "[CommandSimulateTargetDescription]"
                 }
+            ],
+            "examples": [
+                {
+                    "example": "taco simulate",
+                    "description": "[CommandSimulateDefaultExample]"
+                },
+                {
+                    "example": "taco simulate android",
+                    "description": "[CommandSimulateAndroidExample]"
+                },
+                {
+                    "example": "taco simulate windows --target=edge",
+                    "description": "[CommandSimulateWindowsEdgeExample]"
+                }
             ]
         }
     },
