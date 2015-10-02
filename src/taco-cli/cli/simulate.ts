@@ -20,12 +20,16 @@ import commands = tacoUtils.Commands;
 import logger = tacoUtils.Logger;
 
 class Simulate extends commands.TacoCommandBase {
-    private static KnownOptions:Nopt.FlagTypeMap = {
+    private static KNOWN_OPTIONS: Nopt.FlagTypeMap = {
         target: String
     };
 
+    private static parseArguments(args: commands.ICommandData): commands.ICommandData {
+        return tacoUtils.ArgsHelper.parseArguments(Simulate.KNOWN_OPTIONS, {}, args.original, 0);
+    }
+
     public run(data: commands.ICommandData): Q.Promise<any> {
-        var parsed:commands.ICommandData = null;
+        var parsed: commands.ICommandData = null;
         try {
             parsed = Simulate.parseArguments(data);
         } catch (err) {
@@ -33,10 +37,6 @@ class Simulate extends commands.TacoCommandBase {
         }
         simulate({platform: parsed.remain[0], target: parsed.options['target']});
         return Q({});
-    }
-
-    private static parseArguments(args:commands.ICommandData):commands.ICommandData {
-        return tacoUtils.ArgsHelper.parseArguments(Simulate.KnownOptions, {}, args.original, 0);
     }
 
     /**
